@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Palancas | Leonardo</title>
+    <style>
+        /* Estilo base igual a tu portafolio */
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .back-link {
+            align-self: flex-start;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .calc-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        h2 { color: #00ffff; text-align: center; margin-top: 0; }
+        
+        .input-group { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #ccc; }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            box-sizing: border-box; /* Importante para que no se salga del cuadro */
+        }
+
+        input:focus { border-color: #00ffff; outline: none; }
+
+        .btn-calcular {
+            width: 100%;
+            padding: 15px;
+            background: #00ffff;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-calcular:active { transform: scale(0.95); }
+
+        #resultado-area {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+        .formula-hint {
+            font-size: 0.8rem;
+            text-align: center;
+            color: #666;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Volver al Portafolio</a>
+
+    <div class="calc-card">
+        <h2>Física: Palancas</h2>
+        
+        <div class="input-group">
+            <label>Fuerza Aplicada (Potencia) en Newtons:</label>
+            <input type="number" id="fuerza" placeholder="Ej: 100">
+        </div>
+
+        <div class="input-group">
+            <label>Brazo de Fuerza (m):</label>
+            <input type="number" id="brazoF" placeholder="Ej: 2">
+        </div>
+
+        <div class="input-group">
+            <label>Brazo de Resistencia (m):</label>
+            <input type="number" id="brazoR" placeholder="Ej: 0.5">
+        </div>
+
+        <button class="btn-calcular" onclick="hacerMagia()">Calcular Resistencia</button>
+
+        <div id="resultado-area"></div>
+        
+        <p class="formula-hint">Fórmula: P · bp = R · br</p>
+    </div>
+
+    <script>
+        function hacerMagia() {
+            const P = parseFloat(document.getElementById('fuerza').value);
+            const bp = parseFloat(document.getElementById('brazoF').value);
+            const br = parseFloat(document.getElementById('brazoR').value);
+            const resArea = document.getElementById('resultado-area');
+
+            if (isNaN(P) || isNaN(bp) || isNaN(br)) {
+                resArea.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
+                resArea.style.color = "#ff4444";
+                resArea.innerHTML = "¡Por favor, ingresa todos los datos! 🧐";
+                return;
+            }
+
+            // Cálculo: R = (P * bp) / br
+            const R = (P * bp) / br;
+
+            resArea.style.backgroundColor = "rgba(0, 255, 0, 0.1)";
+            resArea.style.color = "#00ff00";
+            resArea.innerHTML = `La Resistencia es: ${R.toFixed(2)} N`;
+        }
+    </script>
+
+</body>
+</html>
