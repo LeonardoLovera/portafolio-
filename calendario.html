@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 30 Días - Calendario 📅</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <h1>Tu Reto de 30 Días 📅</h1>
+    
+    <p id="info-nivel-seleccionado" style="color: #00f0ff; font-weight: bold; font-size: 18px; margin-bottom: 10px;"></p>
+
+    <div id="contenedor-dias" class="grid-calendario"></div>
+
+<script>
+    // 1. Detectar el nivel que viene desde la URL
+    const parametros = new URLSearchParams(window.location.search);
+    const nivelUsuario = parametros.get('nivel') || 'normal';
+
+    // 2. Mostrar el nivel seleccionado en la pantalla
+    document.getElementById('info-nivel-seleccionado').innerText = "NIVEL: " + nivelUsuario.toUpperCase();
+
+    // 3. Generar los 30 botones revisando la memoria interna
+    const contenedor = document.getElementById('contenedor-dias');
+    
+    for (let i = 1; i <= 30; i++) {
+        const estadoDia = localStorage.getItem("dia_" + i);
+        let claseCompletado = (estadoDia === "completado") ? "completado" : "";
+
+        contenedor.innerHTML += `
+            <button class="btn-dia-reto ${claseCompletado}" onclick="calcularRutina(${i})">
+                ${i}
+            </button>
+        `;
+    }
+
+    // 4. Redireccionar a la pantalla de ejercicios con las variables correctas
+    function calcularRutina(numeroDia) {
+        let tipoEntrenamiento = "";
+        
+        if (numeroDia % 3 === 1) {
+            tipoEntrenamiento = "empuje";
+        } else if (numeroDia % 3 === 2) {
+            tipoEntrenamiento = "piernas";
+        } else {
+            tipoEntrenamiento = "circuito";
+        }
+
+        window.location.href = `entrenamiento.html?dia=${numeroDia}&nivel=${nivelUsuario}&rutina=${tipoEntrenamiento}`;
+    }
+</script>
+
+</body>
+</html>
