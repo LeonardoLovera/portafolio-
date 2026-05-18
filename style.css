@@ -430,3 +430,64 @@ h2 {
     margin: 4px 2px;
     border: 1px solid rgba(0, 240, 255, 0.2);
 }
+
+/* ==========================================================================
+   ESTILOS PREMIUM PARA LA SECCIÓN DE SERVICIOS
+   ========================================================================== */
+.services-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: #161a23; /* Fondo oscuro que combina con tu tema */
+    border: 1px solid #242b3d;
+    padding: 30px 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #00f2fe; /* Brillo turquesa neón espectacular */
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.service-card p {
+    color: #a0aec0; /* Color gris claro elegante para el texto */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Diseño adaptable para cuando lo vean desde una Laptop */
+@media (min-width: 768px) {
+    .services-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .service-card {
+        flex: 1;
+    }
+}
