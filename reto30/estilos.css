@@ -1,0 +1,173 @@
+/* Estilos generales para todas las pantallas */
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+h1 { 
+    color: #00f0ff; 
+    text-shadow: 0 0 12px #00f0ff; 
+    font-size: 32px;
+    margin-top: 50px;
+}
+
+p {
+    color: #aaa; 
+    font-size: 16px; 
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 20px auto 40px auto;
+}
+
+/* Botón de la bienvenida */
+/* Botón de la bienvenida estilizado para móvil */
+/* Botón de la bienvenida - Ajuste Perfecto 🎯 */
+
+.btn-principal {
+    background: linear-gradient(45deg, #00f0ff, #0077ff);
+    color: white;
+    text-decoration: none;
+    padding: 16px 30px;    /* ¡Le damos más cuerpo arriba, abajo y a los lados! */
+    font-size: 16px;       /* Mantener la letra elegante */
+    font-weight: bold;
+    border-radius: 30px;   /* Bordes más redondeados tipo cápsula premium */
+    display: inline-block;
+    width: 220px;          /* Le fijamos un ancho ideal para pantallas de teléfono */
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
+}
+
+
+.btn-principal:active {
+    transform: scale(0.98);
+}
+
+/* Botones de la pantalla de niveles */
+.btn-nivel {
+    background: #161616;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #333;
+    padding: 20px;
+    margin: 15px auto;
+    width: 80%;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.btn-nivel:active { 
+    border-color: #00f0ff; 
+    color: #00f0ff; 
+}
+
+/* Cuadrícula para organizar los 30 días */
+.grid-calendario {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Crea 4 columnas iguales */
+    gap: 12px;                             /* Espacio entre los botones */
+    max-width: 340px;                      /* Ancho ideal para la pantalla del cel */
+    margin: 30px auto;                     /* Centra la cuadrícula */
+}
+
+/* Estilo individual para cada botón de día */
+.btn-dia-reto {
+    background: #161616;
+    color: white;
+    border: 1px solid #333;
+    padding: 18px 0;                       /* Alto cómodo para presionar */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+/* Efecto cuando el usuario presiona el día con el dedo */
+.btn-dia-reto:active {
+    background: #00f0ff;
+    color: #0d0d0d;
+    box-shadow: 0 0 12px #00f0ff;
+    transform: scale(0.95);
+}
+
+/* Tarjeta contenedora para cada ejercicio */
+.tarjeta-ejercicio {
+    background: #161616;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 340px;
+    text-align: left; /* Alineado a la izquierda para que se lea cómodo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tarjeta-ejercicio h3 {
+    color: #00f0ff;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.badge-nivel {
+    background: rgba(0, 240, 255, 0.1);
+    color: #00f0ff;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.instrucciones {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Botón para regresar al calendario */
+.btn-volver {
+    background: transparent;
+    color: #aaa;
+    border: 1px solid #444;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 20px;
+}
+.btn-volver:active {
+    border-color: #00f0ff;
+    color: #00f0ff;
+}
+
+/* Estilo para el botón cuando el día ya está hecho */
+.btn-dia-reto.completado {
+    background: #00ff66 !important;
+    color: #0d0d0d !important;
+    border-color: #00ff66 !important;
+    box-shadow: 0 0 12px #00ff66;
+}
+
+/* Estilo premium para el botón de completar día */
+.btn-completar {
+    background: linear-gradient(45deg, #00ff66, #00aa44);
+    color: black;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-top: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 255, 102, 0.4);
+    cursor: pointer;
+}
+.btn-completar:active {
+    transform: scale(0.95);
+}

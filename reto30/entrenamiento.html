@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutina Activa 🦾</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <p id="encabezado-dia" style="color: #aaa; font-weight: bold; margin-bottom: 5px;">RETO DÍA -</p>
+    <h1 id="titulo-rutina" style="font-size: 26px; margin-top: 0;">Cargando Rutina...</h1>
+    
+    <div id="badge" class="badge-nivel">NIVEL: -</div>
+
+    <div id="zona-ejercicios"></div>
+
+    <br>
+    <button class="btn-completar" onclick="marcarDiaCompletado()">¡Día Completado! ✔️</button>
+    <br>
+    <a href="javascript:history.back()" class="btn-volver">⬅️ Volver al Calendario</a>
+
+    <script>
+        // 1. Capturar las variables de la URL
+        const parametros = new URLSearchParams(window.location.search);
+        const dia = parametros.get('dia') || '1';
+        const nivel = parametros.get('nivel') || 'normal';
+        const rutina = parametros.get('rutina') || 'empuje';
+
+        // 2. Pintar los títulos
+        document.getElementById('encabezado-dia').innerText = "RETO DÍA " + dia;
+        document.getElementById('badge').innerText = "NIVEL: " + nivel.toUpperCase();
+
+        // 3. Base de datos con tus rutinas
+        const baseEjercicios = {
+            empuje: [
+                {
+                    nombre: "1. Flexiones Diamante",
+                    principiante: "Apoya las rodillas en el suelo para quitar peso. Haz 3 series de 8 a 10 reps.",
+                    normal: "Flexiones Diamante clásicas con el cuerpo recto en el suelo. Haz 4 series de 10 reps.",
+                    avanzado: "Coloca los pies elevados sobre una silla o cama. Haz 4 series de 12 a 15 reps."
+                },
+                {
+                    nombre: "2. Flexiones Clásicas",
+                    principiante: "Flexiones inclinadas con las manos en la pared o mueble alto. 3 series de 10 reps.",
+                    normal: "Flexiones clásicas completas tocando el suelo con el pecho. 4 series de 12 reps.",
+                    avanzado: "Flexiones explosivas despegando las manos con un aplauso. 4 series de 10 reps."
+                }
+            ],
+            piernas: [
+                {
+                    nombre: "1. Sentadillas",
+                    principiante: "Siéntate y levántate de una silla sin usar tus manos. 3 series de 12 reps.",
+                    normal: "Sentadilla clásica bajando hasta que los muslos queden paralelos. 4 series de 15 reps.",
+                    avanzado: "Sentadilla profunda manteniendo el control abajo. 4 series de 20 reps."
+                },
+                {
+                    nombre: "2. Zancadas hacia atrás",
+                    principiante: "Zancadas cortas apoyando la mano en la pared para el equilibrio. 3 series de 10 por pierna.",
+                    normal: "Zancada completa alternando piernas, rozando el suelo atrás. 4 series de 12 por pierna.",
+                    avanzado: "Zancadas con salto cambiando de pierna en el aire de golpe. 4 series de 10 por pierna."
+                }
+            ],
+            circuito: [
+                {
+                    nombre: "1. Resistencia Total",
+                    principiante: "Jumping jacks sin saltar + Plancha apoyando rodillas (30 segundos). 3 vueltas.",
+                    normal: "Jumping jacks normales con salto + Plancha clásica (45 segundos). 4 vueltas.",
+                    avanzado: "Burpees completos con flexión + Plancha dinámica subiendo y bajando. 4 vueltas al fallo."
+                }
+            ]
+        };
+
+        // 4. Seleccionar la rutina correspondiente
+        const zona = document.getElementById('zona-ejercicios');
+        let lista = [];
+
+        if (rutina === "empuje") {
+            document.getElementById('titulo-rutina').innerText = "Fuerza de Empuje 💪⚡";
+            lista = baseEjercicios.empuje;
+        } else if (rutina === "piernas") {
+            document.getElementById('titulo-rutina').innerText = "Potencia de Piernas 🦵🔥";
+            lista = baseEjercicios.piernas;
+        } else {
+            document.getElementById('titulo-rutina').innerText = "Circuito Full Body 🏆💨";
+            lista = baseEjercicios.circuito;
+        }
+
+        // 5. Inyectar ejercicios en la pantalla
+        lista.forEach(ejercicio => {
+            let instruccionEspecifica = ejercicio[nivel]; 
+            zona.innerHTML += `
+                <div class="tarjeta-ejercicio">
+                    <h3>${ejercicio.nombre}</h3>
+                    <p class="instrucciones">${instruccionEspecifica}</p>
+                </div>
+            `;
+        });
+        
+        // 6. Guardar en la memoria local y regresar al calendario sin saltos raros
+        function marcarDiaCompletado() {
+            localStorage.setItem("dia_" + dia, "completado");
+            alert("🎉 ¡Excelente trabajo! El Día " + dia + " ha sido guardado. ¡Sigue así!");
+            window.location.href = "calendario.html?nivel=" + nivel;
+        }
+    </script>
+
+</body>
+</html>
